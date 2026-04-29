@@ -4,232 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal the Bloom Room | Floral Boutique</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
     <style>
         /* CSS GENERAL */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f6f4f1; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f6f4f1;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden; /* Evita scroll horizontal */
-        }
-
-        /* NAVEGACIÓN */
+        /* NAVEGACIÓN ACTUALIZADA  */
         nav {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 20px 60px;
+            padding: 20px 60px 30px;
             background: #f6f4f1;
-            position: sticky;
-            top: 0;
             z-index: 1000;
             border-bottom: 1px solid #e0ddd8;
         }
 
-        nav h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 400;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #a38b75;
-        }
-
-        /* TÍTULOS DE SECCIÓN */
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            text-align: center;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* HERO SECTION CORREGIDA */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 600px; /* Altura mínima consistente */
-            max-height: 85vh;  /* Evita que sea demasiado alta en laptops */
-            background-color: #ebe7e2;
-            overflow: hidden; /* IMPORTANTE: Corta cualquier sangrado */
-        }
-
-        .hero-img-container {
+        /* Contenedor del Logo Principal */
+        .page-logo {
+            margin-bottom: 0; 
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .hero-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block; /* Elimina espacio blanco debajo */
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px;
-        }
-
-        .hero-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5vw, 42px); /* Tamaño de fuente fluido */
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .hero-text a {
-            text-decoration: none;
-            border-bottom: 1px solid black;
-            width: fit-content;
-            color: inherit;
-            font-size: 11px;
-            font-weight: 600;
-            margin-top: 20px;
-            padding-bottom: 5px;
-        }
-
-        /* GRID DE ARREGLOS */
-        .seccion-padding {
-            padding: 80px 60px;
-            clear: both; /* Asegura separación de secciones */
-        }
-
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            text-decoration: none;
-            color: #333;
-            text-align: center;
-            display: block;
-        }
-
-        .img-vertical {
-            width: 100%;
-            height: 400px; 
-            overflow: hidden;
-            margin-bottom: 15px;
-            border-radius: 2px;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* EDICIONES ROYAL */
-        .ediciones-royal {
-            background-color: #fff;
-        }
-
-        .royal-flex {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            max-width: 1100px;
-            margin: 0 auto;
+            margin-top: 0px;
         }
 
-        /* TESTIMONIOS */
-        .testimonios-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            background-color: #ebe7e2;
-            overflow: hidden;
+       
+        .page-logo img {
+            max-width: 260px;
+            height: auto;
+            object-fit: contain;
         }
 
-        .testimonio-img {
+        /* Enlaces del menú */
+        .nav-links { 
+            display: flex; 
+            gap: 25px; 
+            justify-content: center;
             width: 100%;
-            height: 600px;
-            object-fit: cover;
+            margin-top: 1px;
         }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #333; 
+            text-transform: uppercase; 
+            font-size: 11px; 
+            font-weight: 600; 
+            letter-spacing: 1px; 
+            transition: color 0.3s; 
+        }
+        .nav-links a:hover { color: #a38b75; }
 
-        .testimonio-content {
-            padding: 80px;
-        }
+        /* HERO */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; max-height: 85vh; background-color: #ebe7e2; overflow: hidden; }
+        .hero-img-container { width: 100%; height: 100%; overflow: hidden; }
+        .hero-img-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 60px; }
+        .hero-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 42px); margin-bottom: 20px; font-weight: 400; }
+        .hero-text a { text-decoration: none; border-bottom: 1px solid black; width: fit-content; color: inherit; font-size: 11px; font-weight: 600; margin-top: 20px; padding-bottom: 5px; }
 
-        /* CONTACTO */
-        .contacto {
-            background-color: #7f776d;
-            color: white;
-            text-align: center;
-            padding: 100px 60px;
-        }
+        /* GRID PRODUCTOS */
+        .seccion-padding { padding: 80px 60px; clear: both; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 26px; text-align: center; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 3px; }
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .card { text-decoration: none; color: #333; text-align: center; display: block; }
+        .img-vertical { width: 100%; height: 400px; overflow: hidden; margin-bottom: 15px; border-radius: 2px; }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .card:hover img { transform: scale(1.05); }
 
-        /* RESPONSIVO */
-        @media(max-width: 1024px) {
-            .hero { height: auto; max-height: none; }
-            .testimonio-img { height: 500px; }
-        }
+        /* TESTIMONIOS Y CONTACTO */
+        .ediciones-royal { background-color: #fff; }
+        .royal-flex { display: flex; justify-content: center; gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .testimonios-container { display: grid; grid-template-columns: 1fr 1fr; align-items: center; background-color: #ebe7e2; overflow: hidden; }
+        .testimonio-img { width: 100%; height: 600px; object-fit: cover; }
+        .testimonio-content { padding: 80px; }
+        .contacto { background-color: #7f776d; color: white; text-align: center; padding: 100px 60px; }
 
         @media(max-width: 768px) {
-            nav { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
-            .nav-links { order: 2; }
-            nav h1 { order: 1; }
-            
+            nav { padding: 15px; }
+            .page-logo img { max-width: 200px; }
             .hero { grid-template-columns: 1fr; }
             .hero-img-container { height: 400px; }
-            
-            .seccion-padding { padding: 60px 20px; }
-            .royal-flex { flex-direction: column; align-items: center; }
             .testimonios-container { grid-template-columns: 1fr; }
-            .testimonio-content { padding: 40px 20px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
 <nav>
+    <div class="page-logo">
+        <a href="index.html">
+            <img src="images/Homepage/logo-removebg-preview.png" alt="Royal the Bloom Room Logo">
+        </a>
+    </div>
+    
     <div class="nav-links">
         <a href="#inicio">Inicio</a>
         <a href="#ocasiones">Arreglos</a>
-    </div>
-    <h1>Royal the Bloom Room</h1>
-    <div class="nav-links">
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
     </div>
@@ -255,7 +128,12 @@
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/cumple.jpg"></div><p>Felicitaciones</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/bridetobe.jpg"></div><p>Bride to be</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/porquesi.jpg"></div><p>Solo por que sí</p></a>
-        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/condolencias.jpg"></div><p>Condolencias</p></a>
+        
+        <a href="condolencias.html" class="card">
+            <div class="img-vertical"><img src="images/arreglos-de-ocasion/condolencias.jpg"></div>
+            <p>Condolencias</p>
+        </a>
+
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/mejorate.jpg"></div><p>Mejórate pronto</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/nacimiento.jpg"></div><p>Nacimiento</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/agradecimiento.jpg"></div><p>Agradecimiento</p></a>
@@ -280,9 +158,7 @@
     <img src="images/testimonios/Testimonio-1.jpg" alt="Cliente satisfecha" class="testimonio-img">
     <div class="testimonio-content">
         <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Testimonios</h2>
-        <p class="testimonio-quote">
-            "¡Gracias por la hermosa decoración! Sin duda la mejor opción y siempre haciendo magia y dejando todo tan hermoso en cada uno de nuestros eventos"
-        </p>
+        <p class="testimonio-quote">"¡Gracias por la hermosa decoración! Sin duda la mejor opción..."</p>
         <p class="testimonio-author">— Silvana Duarte</p>
     </div>
 </section>
