@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floral Boutique</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f6f4f1;
+    color: #333;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+nav h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* HERO */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 80vh;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    background: #ebe7e2;
+}
+
+.hero-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.hero-text a {
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    width: fit-content;
+}
+
+/* ABOUT SECTION */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 80px 60px;
+    gap: 40px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.about-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* FEATURE SECTION */
+.feature {
+    background-color: #7f776d;
+    color: white;
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.feature img {
+    width: 100%;
+}
+
+.feature h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+}
+
+/* SERVICES */
+.services {
+    padding: 80px 60px;
+}
+
+.services h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 40px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service {
+    text-align: center;
+}
+
+.service img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .hero, .about, .feature {
+        grid-template-columns: 1fr;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <span>Inicio</span>
+    <h1>NORA</h1>
+    <span>Contacto</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d" alt="flowers">
+    <div class="hero-text">
+        <h2>FINE ART FLORALS</h2>
+        <p>Floral boutique especializada en eventos elegantes y personalizados.</p>
+        <a href="#">VER MÁS</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="">
+    <div class="about-text">
+        <h3>Floral Boutique</h3>
+        <p>
+            Creamos arreglos únicos para bodas, baby showers, bautizos y eventos especiales.
+            Nuestro objetivo es transformar tus ideas en diseños florales elegantes y memorables.
+        </p>
+    </div>
+</section>
+
+<!-- FEATURE -->
+<section class="feature">
+    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946">
+    <div>
+        <h3>Brighten up your life</h3>
+        <p>Diseños florales modernos, delicados y personalizados para cada ocasión.</p>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+    <h2>Servicios</h2>
+    <div class="service-grid">
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1463320726281-696a485928c7">
+            <p>Workshops</p>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+            <p>Bodas</p>
+        </div>
+        <div class="service">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+            <p>Eventos Especiales</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
