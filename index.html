@@ -1,219 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Floral Boutique</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal the Bloom Room | Floral Boutique</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <style>
+        /* CSS GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f6f4f1;
-    color: #333;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f4f1;
+            color: #333;
+            line-height: 1.6;
+        }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 60px;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
+        /* NAVEGACIÓN */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: #f6f4f1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0ddd8;
+        }
 
-nav h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-}
+        nav h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
 
-/* HERO */
-.hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 80vh;
-}
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
 
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
 
-.hero-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px;
-    background: #ebe7e2;
-}
+        .nav-links a:hover {
+            color: #a38b75;
+        }
 
-.hero-text h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    margin-bottom: 20px;
-}
+        /* TÍTULOS DE SECCIÓN */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
 
-.hero-text p {
-    font-size: 14px;
-    margin-bottom: 20px;
-}
+        /* HERO SECTION */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 85vh;
+            background-color: #ebe7e2;
+        }
 
-.hero-text a {
-    text-decoration: none;
-    border-bottom: 1px solid black;
-    width: fit-content;
-}
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* ABOUT SECTION */
-.about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 80px 60px;
-    gap: 40px;
-    align-items: center;
-}
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+        }
 
-.about img {
-    width: 100%;
-    border-radius: 6px;
-}
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
 
-.about-text h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+        .hero-text a {
+            text-decoration: none;
+            border-bottom: 1px solid black;
+            width: fit-content;
+            color: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 20px;
+            padding-bottom: 5px;
+        }
 
-.about-text p {
-    font-size: 14px;
-    line-height: 1.6;
-}
+        /* GRID DE ARREGLOS (RECTÁNGULOS VERTICALES) */
+        .seccion-padding {
+            padding: 80px 60px;
+        }
 
-/* FEATURE SECTION */
-.feature {
-    background-color: #7f776d;
-    color: white;
-    padding: 80px 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
 
-.feature img {
-    width: 100%;
-}
+        .card {
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+        }
 
-.feature h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-}
+        .img-vertical {
+            width: 100%;
+            height: 380px; /* Proporción vertical */
+            overflow: hidden;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
 
-/* SERVICES */
-.services {
-    padding: 80px 60px;
-}
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
 
-.services h2 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 40px;
-}
+        .card:hover img {
+            transform: scale(1.05);
+        }
 
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
+        .card p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
 
-.service {
-    text-align: center;
-}
+        /* EDICIONES ROYAL */
+        .ediciones-royal {
+            background-color: #fff;
+        }
 
-.service img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
+        .royal-flex {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-/* RESPONSIVE */
-@media(max-width: 900px) {
-    .hero, .about, .feature {
-        grid-template-columns: 1fr;
-    }
+        .royal-flex .img-vertical {
+            height: 450px; /* Más grandes para destacar */
+        }
 
-    .service-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+        /* TESTIMONIOS (Imagen Izquierda, Texto Derecha) */
+        .testimonios-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            align-items: center;
+            background-color: #ebe7e2;
+            overflow: hidden;
+        }
+
+        .testimonio-img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+        }
+
+        .testimonio-content {
+            padding: 80px;
+        }
+
+        .testimonio-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .testimonio-author {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #7f776d;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            background-color: #7f776d;
+            color: white;
+            text-align: center;
+            padding: 100px 60px;
+        }
+
+        .contacto p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* RESPONSIVO */
+        @media(max-width: 900px) {
+            nav { flex-direction: column; gap: 15px; padding: 20px; text-align: center; }
+            .hero { grid-template-columns: 1fr; height: auto; }
+            .seccion-padding { padding: 40px 20px; }
+            .royal-flex { flex-direction: column; align-items: center; }
+            .testimonios-container { grid-template-columns: 1fr; }
+            .testimonio-img { height: 400px; }
+            .testimonio-content { padding: 40px 20px; text-align: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAV -->
 <nav>
-    <span>Inicio</span>
-    <h1>NORA</h1>
-    <span>Contacto</span>
+    <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#ocasiones">Arreglos de Ocasión</a>
+    </div>
+    <h1>Royal the Bloom Room</h1>
+    <div class="nav-links">
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+    </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d" alt="flowers">
+<section id="inicio" class="hero">
+    <img src="images/Homepage/index.jpg" alt="Flores principales">
     <div class="hero-text">
         <h2>FINE ART FLORALS</h2>
-        <p>Floral boutique especializada en eventos elegantes y personalizados.</p>
-        <a href="#">VER MÁS</a>
+        <p>Boutique floral dedicada a crear arreglos elegantes con un diseño artístico y personalizado.</p>
+        <a href="#ocasiones">VER CATÁLOGO</a>
     </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about">
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="">
-    <div class="about-text">
-        <h3>Floral Boutique</h3>
-        <p>
-            Creamos arreglos únicos para bodas, baby showers, bautizos y eventos especiales.
-            Nuestro objetivo es transformar tus ideas en diseños florales elegantes y memorables.
+<section id="ocasiones" class="seccion-padding">
+    <h2 class="section-title">Arreglos de Ocasión</h2>
+    <div class="grid-productos">
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/aniversario.jpg"></div><p>Amor / Aniversario</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/cumple.jpg"></div><p>Cumpleaños</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/graduacion.jpg"></div><p>Graduación</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/cumple.jpg"></div><p>Felicitaciones</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/bridetobe.jpg"></div><p>Bride to be</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/porquesi.jpg"></div><p>Solo por que sí</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/condolencias.jpg"></div><p>Condolencias</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/mejorate.jpg"></div><p>Mejórate pronto</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/nacimiento.jpg"></div><p>Nacimiento</p></a>
+        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/agradecimiento.jpg"></div><p>Agradecimiento</p></a>
+    </div>
+</section>
+
+<section id="ediciones-royal" class="seccion-padding ediciones-royal">
+    <h2 class="section-title">Ediciones Royal</h2>
+    <div class="royal-flex">
+        <a href="#" class="card">
+            <div class="img-vertical"><img src="images/ediciones-royal/kokedamas-menu.jpg" alt="Kokedamas"></div>
+            <p><strong>Kokedamas</strong></p>
+        </a>
+        <a href="#" class="card">
+            <div class="img-vertical"><img src="images/ediciones-royal/canastas-menu.jpg" alt="Canastas"></div>
+            <p><strong>Canastas</strong></p>
+        </a>
+    </div>
+</section>
+
+<section id="testimonios" class="testimonios-container">
+    <img src="images/testimonios/Testimonio-1.jpg" alt="Cliente satisfecha" class="testimonio-img">
+    <div class="testimonio-content">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Testimonios</h2>
+        <p class="testimonio-quote">
+            "¡Gracias por la hermosa decoración! Sin duda la mejor opción y siempre haciendo magia y dejando todo tan hermoso en cada uno de nuestros eventos"
         </p>
+        <p class="testimonio-author">— Silvana Duarte</p>
     </div>
 </section>
 
-<!-- FEATURE -->
-<section class="feature">
-    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946">
-    <div>
-        <h3>Brighten up your life</h3>
-        <p>Diseños florales modernos, delicados y personalizados para cada ocasión.</p>
-    </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services">
-    <h2>Servicios</h2>
-    <div class="service-grid">
-        <div class="service">
-            <img src="https://images.unsplash.com/photo-1463320726281-696a485928c7">
-            <p>Workshops</p>
-        </div>
-        <div class="service">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-            <p>Bodas</p>
-        </div>
-        <div class="service">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-            <p>Eventos Especiales</p>
-        </div>
+<section id="contacto" class="contacto">
+    <h2 class="section-title" style="color: white;">Contacto</h2>
+    <p>Estamos listos para hacer tu visión realidad.</p>
+    <div style="margin-top: 40px;">
+        <p>WhatsApp: +52 (55) 1234 5678</p>
+        <p>Instagram: @royal.thebloomroom</p>
+        <p>Ciudad de México, MX</p>
     </div>
 </section>
 
