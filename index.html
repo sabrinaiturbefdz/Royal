@@ -83,12 +83,33 @@
         .contacto { background-color: #7f776d; color: white; text-align: center; padding: 100px 60px; }
 
         @media(max-width: 768px) {
-            nav { padding: 15px; }
-            .page-logo img { max-width: 200px; }
-            .hero { grid-template-columns: 1fr; }
-            .hero-img-container { height: 400px; }
-            .testimonios-container { grid-template-columns: 1fr; }
-        }
+    nav { padding: 15px; }
+    .page-logo img { max-width: 200px; }
+    
+    /* Cambios en el Hero para móvil */
+    .hero { 
+        grid-template-columns: 1fr; 
+        min-height: auto; /* Permite que la sección se ajuste al contenido */
+        max-height: none; 
+    }
+
+    .hero-img-container { 
+        height: auto; /* La altura dependerá de la imagen */
+    }
+
+    .hero-img-container img { 
+        width: 100%; 
+        height: auto; /* Mantiene la proporción original */
+        object-fit: contain; /* Asegura que se vea completa */
+        display: block;
+    }
+
+    .hero-text { 
+        padding: 40px 20px; 
+        text-align: center;
+        align-items: center; /* Centra el botón en móvil */
+    }
+}
     </style>
 </head>
 <body>
