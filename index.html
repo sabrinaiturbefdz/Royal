@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droders Burgers | Menú Oficial</title>
+    <style>
+        :root {
+            --brand-red: #e31b23;
+            --brand-tan: #d2b48c;
+            --dark-bg: #121212;
+            --white: #ffffff;
+            --card-bg: #1e1e1e;
+        }
+
+        /* Desplazamiento suave al hacer clic en el menú */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* HEADER CON LOGO A LA IZQUIERDA Y MENÚ A LA DERECHA */
+        header {
+            background-color: var(--brand-red);
+            padding: 10px 40px;
+            border-bottom: 5px solid var(--brand-tan);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container img {
+            max-width: 120px;
+            height: auto;
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--brand-tan);
+        }
+
+        .menu-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            color: var(--brand-red);
+            text-align: center;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            margin-top: 60px;
+            border-bottom: 2px solid var(--brand-red);
+            display: block;
+            scroll-margin-top: 100px; /* Evita que el header tape el título al scrollear */
+        }
+
+        /* FRASE LLAMATIVA ANGUS */
+        .patty-info {
+            text-align: center;
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+            padding: 15px;
+            border: 2px dashed var(--brand-tan);
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
+
+        .patty-info b {
+            color: var(--brand-red);
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+
+        /* GRID DE PRODUCTOS */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-red);
+        }
+
+        .badge-new {
+            background: var(--brand-red);
+            color: white;
+            padding: 5px 15px;
+            position: absolute;
+            z-index: 10;
+            font-size: 0.8rem;
+            border-radius: 0 0 10px 0;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #2a2a2a;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-content h3 {
+            margin: 0;
+            color: var(--brand-red);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .description {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            color: #ccc;
+            margin: 10px 0;
+            flex-grow: 1;
+        }
+
+        .pricing {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-single {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .price-combo {
+            background: var(--brand-red);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .price-combo span {
+            display: block;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* EXTRAS Y BEBIDAS */
+        .extras-container {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--brand-tan);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            scroll-margin-top: 100px;
+        }
+
+        .extra-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .extra-name {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .extra-price {
+            color: var(--brand-tan);
+            font-weight: bold;
+        }
+
+        .allergen-info {
+            margin-top: 50px;
+            padding: 20px;
+            background: #222;
+            border-left: 5px solid var(--brand-red);
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .allergen-info h4 {
+            color: var(--brand-red);
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        footer {
+            background: var(--brand-red);
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav ul {
+                margin-top: 15px;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            nav ul li a {
+                font-size: 0.75rem;
+            }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="imagenes/logo-Photoroom.png" alt="Droders Burgers Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#entradas">Entradas</a></li>
+                <li><a href="#papas">Papas</a></li>
+                <li><a href="#burgers">Burgers</a></li>
+                <li><a href="#pollo">Pollo</a></li>
+                <li><a href="#extras">Extras</a></li>
+                <li><a href="#refrescos">Refrescos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="menu-container">
+        
+        <h2 id="entradas" class="section-title">Entradas</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img2.png" alt="Dedos de queso"></div>
+                <div class="menu-content">
+                    <h3>Dedos de queso</h3>
+                    <p class="description">Dedos de queso mozzarella acompañados con Chipotle Droder's, Ranch, Bbq o Buffalo.</p>
+                    <div class="pricing"><div class="price-single">$100</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img3.png" alt="Jalapeños"></div>
+                <div class="menu-content">
+                    <h3>Jalapeños</h3>
+                    <p class="description">Jalapeños empanizados rellenos de queso crema acompañados con Chipotle Droder's, Ranch, Bbq o Buffalo.</p>
+                    <div class="pricing"><div class="price-single">$100</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img4.png" alt="Aros de cebolla"></div>
+                <div class="menu-content">
+                    <h3>Aros de cebolla</h3>
+                    <p class="description">Crujientes aros de cebolla empanizados, acompañados de Chipotle Droder's, Ranch, Bbq o Buffalo.</p>
+                    <div class="pricing"><div class="price-single">$100</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img5.png" alt="Sampler Supreme"></div>
+                <div class="menu-content">
+                    <h3>Sampler Supreme</h3>
+                    <p class="description">Dedos de queso, jalapeños empanizados, aros de cebolla, papas a la francesa, acompañados de aderezos.</p>
+                    <div class="pricing"><div class="price-single">$210</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container">
+                    <span class="badge-new">NEW</span>
+                    <img src="imagenes/img6.png" alt="Macarrones c/ queso">
+                </div>
+                <div class="menu-content">
+                    <h3>Macarrones c/ queso</h3>
+                    <p class="description">Macarrones con queso, chilito Droder's y tocino.</p>
+                    <div class="pricing"><div class="price-single">$80</div></div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="papas" class="section-title">Papas</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img7.png" alt="Papas a la francesa"></div>
+                <div class="menu-content">
+                    <h3>Papas a la francesa</h3>
+                    <p class="description">Nuestras clásicas papas fritas doradas y crujientes.</p>
+                    <div class="pricing"><div class="price-single">$60</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img8.png" alt="Papas manchadas"></div>
+                <div class="menu-content">
+                    <h3>Papas manchadas</h3>
+                    <p class="description">Papas a la francesa con queso y Chipotle Droder's.</p>
+                    <div class="pricing"><div class="price-single">$80</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img9.png" alt="Papas Dude's"></div>
+                <div class="menu-content">
+                    <h3>Papas Dude's</h3>
+                    <p class="description">Papas a la francesa con queso y Sloppy Joe.</p>
+                    <div class="pricing"><div class="price-single">$110</div></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img10.png" alt="Papas Caroline"></div>
+                <div class="menu-content">
+                    <h3>Papas Caroline</h3>
+                    <p class="description">Papas a la francesa con queso, cebolla caramelizada, carne Angus y aguacate.</p>
+                    <div class="pricing"><div class="price-single">$185</div></div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="burgers" class="section-title">Burgers</h2>
+        <span class="patty-info">Nuestro Patty de carne <b>ANGUS</b> es de <b>150g</b></span>
+        
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="image-container">
+                    <span class="badge-new">NEW</span>
+                    <img src="imagenes/img6.png" alt="Classic Burger">
+                </div>
+                <div class="menu-content">
+                    <h3>Classic Burger</h3>
+                    <p class="description">Carne de res Angus, queso, lechuga, tomate, cebolla, aguacate, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$170</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$245</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img2.png" alt="Cheese Burger"></div>
+                <div class="menu-content">
+                    <h3>Cheese</h3>
+                    <p class="description">Carne de res Angus, queso amarillo y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$120</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$190</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img7.png" alt="Cheese Doble"></div>
+                <div class="menu-content">
+                    <h3>Cheese Doble</h3>
+                    <p class="description">Doble carne de res Angus, doble queso y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$175</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$245</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container">
+                    <span class="badge-new">NEW</span>
+                    <img src="imagenes/img8.png" alt="Juicy Bacon Jam">
+                </div>
+                <div class="menu-content">
+                    <h3>Juicy Bacon Jam</h3>
+                    <p class="description">Carne de res Angus, queso, mermelada de tocino, pepinillos, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$190</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$260</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img4.png" alt="Americana"></div>
+                <div class="menu-content">
+                    <h3>Americana</h3>
+                    <p class="description">Carne de res Angus, queso, cebolla caramelizada, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$155</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$225</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img9.png" alt="Western"></div>
+                <div class="menu-content">
+                    <h3>Western</h3>
+                    <p class="description">Carne de res Angus, queso, aros de cebolla, tocino, Bbq, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$210</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$280</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img5.png" alt="Avocado Supreme"></div>
+                <div class="menu-content">
+                    <h3>Avocado Supreme</h3>
+                    <p class="description">Carne de res Angus, queso, cebolla caramelizada, aguacate, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$185</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$255</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img3.png" alt="Tropicana"></div>
+                <div class="menu-content">
+                    <h3>Tropicana</h3>
+                    <p class="description">Carne de res Angus, queso, piña asada, tocino, Bbq, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$210</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$280</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img10.png" alt="Sloppy Joe"></div>
+                <div class="menu-content">
+                    <h3>Sloppy Joe</h3>
+                    <p class="description">Dudes chili, queso, cebolla caramelizada, costra de cuatro quesos y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$155</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$225</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="pollo" class="section-title">Pollo</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img4.png" alt="Chicken Burger"></div>
+                <div class="menu-content">
+                    <h3>Chicken</h3>
+                    <p class="description">Pechuga de pollo crujiente 200g, queso amarillo americano, costra de cuatro quesos, aros de cebolla, Bbq y pan brioche.</p>
+                    <div class="pricing">
+                        <div class="price-single">$190</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$260</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img3.png" alt="Chicken Tenders"></div>
+                <div class="menu-content">
+                    <h3>Tenders</h3>
+                    <p class="description">Cama de papas a la francesa, tenders de pechuga de pollo 200g crujiente acompañados de Dude's Chipotle, Ranch, Bbq o Buffalo.</p>
+                    <div class="pricing">
+                        <div class="price-single">$170</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$200</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="image-container"><img src="imagenes/img2.png" alt="Boneless Chicken"></div>
+                <div class="menu-content">
+                    <h3>Boneless</h3>
+                    <p class="description">Boneless de pechuga de pollo 200g, acompañados de Dude's Chipotle, Ranch, Bbq o Buffalo y papas a la francesa.</p>
+                    <div class="pricing">
+                        <div class="price-single">$170</div>
+                        <div class="price-combo">COMBO PAPAS/REFRESCO <span>$200</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="extras" class="section-title">Extras</h2>
+        <div class="extras-container">
+            <div class="extra-box"><span class="extra-name">Cebolla Caramelizada</span><span class="extra-price">$30</span></div>
+            <div class="extra-box"><span class="extra-name">Tocino</span><span class="extra-price">$35</span></div>
+            <div class="extra-box"><span class="extra-name">Aguacate</span><span class="extra-price">$35</span></div>
+            <div class="extra-box"><span class="extra-name">Piña</span><span class="extra-price">$35</span></div>
+            <div class="extra-box"><span class="extra-name">Aros de cebolla</span><span class="extra-price">$35</span></div>
+            <div class="extra-box"><span class="extra-name">Carne Extra</span><span class="extra-price">$58</span></div>
+            <div class="extra-box"><span class="extra-name">Sloppy Joe Extra</span><span class="extra-price">$58</span></div>
+        </div>
+
+        <h2 id="refrescos" class="section-title">Bebidas</h2>
+        <div class="extras-container">
+            <div class="extra-box"><span class="extra-name">Refrescos</span><span class="extra-price">$50</span></div>
+            <div class="extra-box"><span class="extra-name">Arizona</span><span class="extra-price">$50</span></div>
+            <div class="extra-box"><span class="extra-name">Agua</span><span class="extra-price">$30</span></div>
+        </div>
+
+        <div class="allergen-info">
+            <h4>Información sobre alérgenos</h4>
+            <p>Si tienes alergia a algún ingrediente asegúrate de preguntarle al encargado cuando ordenes.</p>
+            <ul>
+                <li>El pan contiene huevo, mantequilla y leche.</li>
+                <li>El aderezo chipotle contiene mostaza.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <h3 style="text-transform: uppercase;">Droders Burgers</h3>
+        <p>¡Pide ya por tu app favorita!</p>
+        <p>© 2026</p>
+    </footer>
+
+</body>
+</html>

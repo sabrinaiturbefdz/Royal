@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Chingona - Hamburguesería Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #ffb703;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --success: #2a9d8f;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            padding-bottom: 200px;
+        }
+
+        header {
+            background-color: var(--dark);
+            color: var(--secondary);
+            padding: 1.5rem;
+            text-align: center;
+            font-family: 'Bangers', cursive;
+            font-size: 2.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            font-family: 'Bangers', cursive;
+            color: var(--primary);
+            font-size: 2.5rem;
+            border-bottom: 4px solid var(--secondary);
+            display: inline-block;
+            margin: 2rem 0 1rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { transform: translateY(-8px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-content { padding: 1.5rem; text-align: center; flex-grow: 1; }
+        .card h3 { margin: 0; font-family: 'Bangers', cursive; font-size: 1.8rem; }
+
+        .price-tag { color: var(--primary); font-weight: bold; font-size: 1.3rem; margin: 10px 0; }
+
+        /* Selectores de Combo */
+        .combo-box {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .btn-toggle-custom {
+            background: #eee;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .custom-section {
+            display: none;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .extra-item { display: flex; justify-content: space-between; margin-bottom: 5px; }
+
+        .note-area {
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .add-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        /* Estilos del Carrito */
+        #cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            width: 380px;
+            z-index: 1000;
+        }
+
+        #cart h4 { margin: 0 0 10px 0; font-family: 'Bangers'; color: var(--secondary); font-size: 1.5rem; border-bottom: 1px solid #444; }
+
+        #cart-items { max-height: 250px; overflow-y: auto; margin-bottom: 15px; }
+
+        .cart-line {
+            background: rgba(255,255,255,0.08);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .cart-line-header { display: flex; justify-content: space-between; font-weight: bold; color: var(--secondary); }
+
+        .cart-summary { font-size: 0.75rem; color: #bbb; margin-top: 3px; }
+
+        .cart-note-box {
+            background: rgba(0,0,0,0.3);
+            padding: 6px;
+            margin-top: 5px;
+            border-left: 3px solid var(--secondary);
+            font-style: italic;
+        }
+
+        .total-price { font-size: 1.8rem; font-weight: bold; color: var(--secondary); }
+        .remove-link { color: var(--primary); cursor: pointer; text-decoration: underline; font-size: 0.7rem; }
+
+    </style>
+</head>
+<body>
+
+<header>🍔 LA CHINGONA - BURGER & COMBO 🍟</header>
+
+<div class="container">
+    <h2>Nuestras 8 Hamburguesas</h2>
+    <div class="menu-grid" id="burger-menu"></div>
+
+    <h2>Extras y Bebidas</h2>
+    <div class="menu-grid" id="extras-menu"></div>
+</div>
+
+<div id="cart">
+    <h4>🛒 TU ORDEN</h4>
+    <div id="cart-items"><p style="text-align:center; opacity:0.5;">Carrito vacío</p></div>
+    <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #555; padding-top:10px;">
+        <span>TOTAL:</span>
+        <span class="total-price" id="grand-total">$0.00</span>
+    </div>
+    <button class="add-btn" style="background:var(--success); margin-top:10px;" onclick="confirmar()">ORDENAR AHORA</button>
+</div>
+
+<script>
+    const burgers = [
+        { id: 1, name: "Clásica", price: 10, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400", extras: [{n: "Queso", p: 0.5}, {n: "Pepinillos", p: 0.5}] },
+        { id: 2, name: "Bacon Boss", price: 12, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400", extras: [{n: "Tocino x2", p: 1.5}, {n: "Huevo", p: 1.0}] },
+        { id: 3, name: "La Picante", price: 11, img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400", extras: [{n: "Aguacate", p: 1.0}, {n: "Chiles", p: 0.5}] },
+        { id: 4, name: "Veggie Supreme", price: 9, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400", extras: [{n: "Lettuce Wrap", p: 1.0}, {n: "Aguacate", p: 1.0}] },
+        { id: 5, name: "Hawaiana", price: 11, img: "https://images.unsplash.com/photo-1547584370-2cc98b8b8dc8?w=400", extras: [{n: "Piña Extra", p: 0.75}, {n: "Cereza", p: 0.5}] },
+        { id: 6, name: "Blue Cheese", price: 13, img: "https://images.unsplash.com/photo-1525059696034-476775ad3222?w=400", extras: [{n: "Nuez", p: 0.75}, {n: "Miel", p: 0.5}] },
+        { id: 7, name: "Crispy Chicken", price: 10, img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400", extras: [{n: "Salsa Ranch", p: 0.5}, {n: "Col", p: 0.5}] },
+        { id: 8, name: "La Triple", price: 15, img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400", extras: [{n: "Cuarta Carne", p: 3.0}, {n: "Queso Dip", p: 1.5}] }
+    ];
+
+    const extrasMenu = [
+        { id: 9, name: "Papas Fritas", price: 4, img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400" },
+        { id: 10, name: "Aros de Cebolla", price: 5, img: "https://images.unsplash.com/photo-1639024471283-03518883512d?w=400" },
+        { id: 11, name: "Refresco", price: 3, img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400" },
+        { id: 12, name: "Malteada", price: 6, img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400" },
+        { id: 13, name: "Nuggets", price: 5, img: "https://images.unsplash.com/photo-1562967914-608f82629710?w=400" },
+        { id: 14, name: "Salsas", price: 1, img: "https://images.unsplash.com/photo-1460306855393-0410f61241c7?w=400" }
+    ];
+
+    let cart = [];
+
+    function render() {
+        const bContainer = document.getElementById('burger-menu');
+        burgers.forEach(b => {
+            bContainer.innerHTML += `
+                <div class="card">
+                    <img src="${b.img}">
+                    <div class="card-content">
+                        <h3>${b.name}</h3>
+                        <div class="combo-box">
+                            <label><input type="radio" name="m-${b.id}" id="s-${b.id}" checked> Sola ($${b.price})</label>
+                            <label><input type="radio" name="m-${b.id}" id="c-${b.id}"> Combo (+$5)</label>
+                        </div>
+                        <button class="btn-toggle-custom" onclick="toggle(${b.id})">⚙️ Personalizar Ingredientes</button>
+                        <div class="custom-section" id="custom-${b.id}">
+                            ${b.extras.map(ex => `<div class="extra-item"><label><input type="checkbox" class="ex-${b.id}" data-n="${ex.n}" data-p="${ex.p}"> ${ex.n}</label><span>+$${ex.p}</span></div>`).join('')}
+                            <textarea class="note-area" id="note-${b.id}" placeholder="Nota especial..."></textarea>
+                        </div>
+                        <button class="add-btn" onclick="addBurger(${b.id})">Añadir al Carrito</button>
+                    </div>
+                </div>`;
+        });
+
+        const eContainer = document.getElementById('extras-menu');
+        extrasMenu.forEach(e => {
+            eContainer.innerHTML += `
+                <div class="card"><img src="${e.img}"><div class="card-content"><h3>${e.name}</h3><p class="price-tag">$${e.price}</p><button class="add-btn" onclick="addExtra(${e.id})">Añadir</button></div></div>`;
+        });
+    }
+
+    function toggle(id) {
+        const s = document.getElementById(`custom-${id}`);
+        s.style.display = s.style.display === "block" ? "none" : "block";
+    }
+
+    function addBurger(id) {
+        const b = burgers.find(x => x.id === id);
+        const isCombo = document.getElementById(`c-${id}`).checked;
+        const note = document.getElementById(`note-${id}`).value;
+        let extrasN = []; let extrasP = 0;
+        
+        document.querySelectorAll(`.ex-${id}:checked`).forEach(cb => {
+            extrasN.push(cb.getAttribute('data-n'));
+            extrasP += parseFloat(cb.getAttribute('data-p'));
+            cb.checked = false;
+        });
+
+        const item = {
+            uid: Date.now() + Math.random(),
+            name: isCombo ? b.name + " (Combo)" : b.name,
+            price: b.price + extrasP + (isCombo ? 5 : 0),
+            summary: extrasN.join(', '),
+            note: note
+        };
+        cart.push(item);
+        document.getElementById(`note-${id}`).value = "";
+        document.getElementById(`custom-${id}`).style.display = "none";
+        update();
+    }
+
+    function addExtra(id) {
+        const e = extrasMenu.find(x => x.id === id);
+        cart.push({ uid: Date.now() + Math.random(), name: e.name, price: e.price, summary: "", note: "" });
+        update();
+    }
+
+    function update() {
+        const c = document.getElementById('cart-items');
+        const t = document.getElementById('grand-total');
+        if (cart.length === 0) { c.innerHTML = '<p style="text-align:center; opacity:0.5;">Carrito vacío</p>'; t.innerText = "$0.00"; return; }
+        
+        c.innerHTML = ""; let total = 0;
+        cart.forEach(i => {
+            total += i.price;
+            c.innerHTML += `<div class="cart-line">
+                <div class="cart-line-header"><span>${i.name}</span><span>$${i.price.toFixed(2)}</span></div>
+                ${i.summary ? `<div class="cart-summary">+ ${i.summary}</div>` : ''}
+                ${i.note ? `<div class="cart-note-box">${i.note}</div>` : ''}
+                <span class="remove-link" onclick="remove(${i.uid})">Eliminar</span>
+            </div>`;
+        });
+        t.innerText = `$${total.toFixed(2)}`;
+    }
+
+    function remove(uid) { cart = cart.filter(x => x.uid !== uid); update(); }
+    function confirmar() { if(cart.length > 0) alert("¡Orden confirmada!"); cart = []; update(); }
+
+    render();
+</script>
+</body>
+</html>
