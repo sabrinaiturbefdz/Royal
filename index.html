@@ -22,7 +22,6 @@
             border-bottom: 1px solid #e0ddd8;
         }
 
-        /* Contenedor del Logo Principal */
         .page-logo {
             margin-bottom: 0; 
             width: 100%;
@@ -31,14 +30,12 @@
             margin-top: 0px;
         }
 
-       
         .page-logo img {
             max-width: 260px;
             height: auto;
             object-fit: contain;
         }
 
-        /* Enlaces del menú */
         .nav-links { 
             display: flex; 
             gap: 25px; 
@@ -74,6 +71,21 @@
         .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .card:hover img { transform: scale(1.05); }
 
+        /* NUEVOS ESTILOS PARA BOTÓN DE DESCARGA EN CATÁLOGOS */
+        .btn-descarga {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #7f776d;
+            color: white !important;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+        .card:hover .btn-descarga { background-color: #a38b75; }
+
         /* TESTIMONIOS Y CONTACTO */
         .ediciones-royal { background-color: #fff; }
         .royal-flex { display: flex; justify-content: center; gap: 40px; max-width: 1100px; margin: 0 auto; }
@@ -83,33 +95,14 @@
         .contacto { background-color: #7f776d; color: white; text-align: center; padding: 100px 60px; }
 
         @media(max-width: 768px) {
-    nav { padding: 15px; }
-    .page-logo img { max-width: 200px; }
-    
-    /* Cambios en el Hero para móvil */
-    .hero { 
-        grid-template-columns: 1fr; 
-        min-height: auto; /* Permite que la sección se ajuste al contenido */
-        max-height: none; 
-    }
-
-    .hero-img-container { 
-        height: auto; /* La altura dependerá de la imagen */
-    }
-
-    .hero-img-container img { 
-        width: 100%; 
-        height: auto; /* Mantiene la proporción original */
-        object-fit: contain; /* Asegura que se vea completa */
-        display: block;
-    }
-
-    .hero-text { 
-        padding: 40px 20px; 
-        text-align: center;
-        align-items: center; /* Centra el botón en móvil */
-    }
-}
+            nav { padding: 15px; }
+            .page-logo img { max-width: 200px; }
+            .hero { grid-template-columns: 1fr; min-height: auto; max-height: none; }
+            .hero-img-container { height: auto; }
+            .hero-img-container img { width: 100%; height: auto; object-fit: contain; display: block; }
+            .hero-text { padding: 40px 20px; text-align: center; align-items: center; }
+            .seccion-padding { padding: 60px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -124,6 +117,7 @@
     <div class="nav-links">
         <a href="#inicio">Inicio</a>
         <a href="#ocasiones">Arreglos</a>
+        <a href="#catalogos">Catálogos</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
     </div>
@@ -136,25 +130,20 @@
     <div class="hero-text">
         <h2>FINE ART FLORALS</h2>
         <p>Boutique floral dedicada a crear arreglos elegantes con un diseño artístico y personalizado.</p>
-        <a href="#ocasiones">VER CATÁLOGO</a>
+        <a href="#catalogos">VER CATÁLOGOS</a>
     </div>
 </section>
 
 <section id="ocasiones" class="seccion-padding">
     <h2 class="section-title">Arreglos de Ocasión</h2>
     <div class="grid-productos">
-        <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/aniversario.jpg"></div><p>Amor / Aniversario</p></a>
+        <a href="aniversario.html" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/aniversario.jpg"></div><p>Amor / Aniversario</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/cumple.jpg"></div><p>Cumpleaños</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/graduacion.jpg"></div><p>Graduación</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/cumple.jpg"></div><p>Felicitaciones</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/bridetobe.jpg"></div><p>Bride to be</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/porquesi.jpg"></div><p>Solo por que sí</p></a>
-        
-        <a href="condolencias.html" class="card">
-            <div class="img-vertical"><img src="images/arreglos-de-ocasion/condolencias.jpg"></div>
-            <p>Condolencias</p>
-        </a>
-
+        <a href="condolencias.html" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/condolencias.jpg"></div><p>Condolencias</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/mejorate.jpg"></div><p>Mejórate pronto</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/nacimiento.jpg"></div><p>Nacimiento</p></a>
         <a href="#" class="card"><div class="img-vertical"><img src="images/arreglos-de-ocasion/agradecimiento.jpg"></div><p>Agradecimiento</p></a>
@@ -171,6 +160,43 @@
         <a href="#" class="card">
             <div class="img-vertical"><img src="images/ediciones-royal/canastas-menu.jpg" alt="Canastas"></div>
             <p><strong>Canastas</strong></p>
+        </a>
+    </div>
+</section>
+
+<section id="catalogos" class="seccion-padding">
+    <h2 class="section-title">Nuestros Catálogos</h2>
+    <div class="grid-productos">
+        <a href="images/catalogos/dia de las madres.pdf" target="_blank" class="card">
+            <div class="img-vertical">
+                <img src="images/catalogos/diadelasmadres.png" alt="Catálogo Día de las Madres">
+            </div>
+            <p><strong>Día de las Madres</strong></p>
+            <span class="btn-descarga">Ver PDF</span>
+        </a>
+
+        <a href="pdf/catalogo-san-valentin.pdf" target="_blank" class="card">
+            <div class="img-vertical">
+                <img src="images/catalogos/portada-san-valentin.jpg" alt="Catálogo San Valentín">
+            </div>
+            <p><strong>San Valentín</strong></p>
+            <span class="btn-descarga">Ver PDF</span>
+        </a>
+
+        <a href="pdf/catalogo-graduacion.pdf" target="_blank" class="card">
+            <div class="img-vertical">
+                <img src="images/catalogos/portada-graduacion.jpg" alt="Catálogo Graduación">
+            </div>
+            <p><strong>Graduación</strong></p>
+            <span class="btn-descarga">Ver PDF</span>
+        </a>
+
+        <a href="pdf/catalogo-navidad.pdf" target="_blank" class="card">
+            <div class="img-vertical">
+                <img src="images/catalogos/portada-navidad.jpg" alt="Catálogo Navidad">
+            </div>
+            <p><strong>Navidad</strong></p>
+            <span class="btn-descarga">Ver PDF</span>
         </a>
     </div>
 </section>
