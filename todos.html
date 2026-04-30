@@ -1,9 +1,9 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniversario | Royal the Bloom Room</title>
+    <title>Arreglos | Royal the Bloom Room</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -71,6 +71,31 @@
             font-size: 14px;
             color: #555;
             font-style: italic;
+        }
+
+        /* Estilos para el Filtro */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-container label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 10px;
+            color: #7f776d;
+        }
+
+        #sortPrice {
+            padding: 8px 15px;
+            font-family: 'Inter', sans-serif;
+            border: 1px solid #e0ddd8;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            outline: none;
         }
 
         .seccion-padding { padding: 40px 60px 80px; }
@@ -146,58 +171,80 @@
 </nav>
 
 <main class="seccion-padding">
-    <h2 class="section-title">Arreglos de Aniversario</h2>
+    <h2 class="section-title">Arreglos</h2>
     
     <div class="intro-text">
         <h3>— Amor que florece —</h3>
         <p>Celebramos cada historia de amor con arreglos elegantes y románticos. Diseños pensados para expresar pasión, compromiso y momentos inolvidables.</p>
     </div>
-    
-    <div class="grid-condolencias">
 
-        
-        <div class="product-card">
+    <div class="filter-container">
+        <label for="sortPrice">Ordenar por:</label>
+        <select id="sortPrice">
+            <option value="default">Filtros</option>
+            <option value="low">Precio: Menor a Mayor</option>
+            <option value="high">Precio: Mayor a Menor</option>
+        </select>
+    </div>
+    
+    <div class="grid-condolencias" id="flowerGrid">
+
+        <div class="product-card" data-price="3200">
             <img src="images/arreglos/aniversario/carmesi.jpeg" alt="Rojo Carmesí">
             <h3>Carmesí</h3>
             <p class="plant-type">Arreglo de 100 rosas rojas y follaje en base de cristal negro </p>
             <p class="price">$3,200 MXN</p>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-price="650">
             <img src="images/arreglos/aniversario/rojoclasico.jpeg" alt="Rojo Especial">
             <h3>Rojo Clasico</h3>
             <p class="plant-type">12 Rosas rojas con follaje</p>
             <p class="price">$650 MXN</p>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-price="800">
             <img src="images/arreglos/aniversario/rojoclasicon2.jpeg" alt="Corona Siempre Presente">
             <h3>Rojo Clasico N°24</h3>
             <p class="plant-type">24 rosas rojas con follaje</p>
             <p class="price">$800 MXN</p>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-price="1350">
             <img src="images/arreglos/aniversario/rojo clásico N°2-50.jpeg" alt="Jardin del recuerdo">
             <h3>Rojo clásico N°50</h3>
             <p class="plant-type">50 rosas rojas con follaje </p>
             <p class="price">$1,350 MXN</p>
         </div>
 
-        <div class="product-card">
-            <img src="images/condolencias/arreglo3.jpg" alt="Luz de Esperanza">
-            <h3>Luz de Esperanza</h3>
-            <p class="plant-type">Crisantemos y Claveles</p>
-            <p class="price">$950 MXN</p>
+        <div class="product-card" data-price="1900">
+            <img src="images/arreglos/porquesi/tulippop.jpeg" alt="Rojo Carmesí">
+            <h3>Tulip Pop</h3>
+            <p class="plant-type">20 tulipanes con botones de orquídea, en base de cristal decorada con piedra de río </p>
+            <p class="price">$1,900 MXN</p>
         </div>
 
-        <div class="product-card">
-            <img src="images/condolencias/arreglo4.jpg" alt="Serenidad">
-            <h3>Serenidad</h3>
-            <p class="plant-type">Combinación de Flores Blancas</p>
-            <p class="price">$1,100 MXN</p>
+        <div class="product-card" data-price="1400">
+            <img src="images/arreglos/porquesi/bloompop.jpeg" alt="Rojo Especial">
+            <h3>Bloom Pop</h3>
+            <p class="plant-type">Hortencias, tulipanes, mini rosa y craspedias en base de cristal blanco</p>
+            <p class="price">$1,400 MXN</p>
         </div>
 
+        <div class="product-card" data-price="2100">
+            <img src="images/arreglos/condolencias/corona.jpeg" alt="Corona Siempre Presente">
+            <h3>Corona Siempre Presente</h3>
+            <p class="plant-type">Rosa blanca, lisianthus blanco, ruscus y campanita</p>
+            <p class="price">$2,100 MXN</p>
+        </div>
+
+        <div class="product-card" data-price="1300">
+            <img src="images/arreglos/condolencias/jardin-del-recuerdo.jpg" alt="Jardin del recuerdo">
+            <h3>Jardin del recuerdo</h3>
+            <p class="plant-type">Orquídeas blancas, porcelana, musgo, craspedia y ruscus</p>
+            <p class="price">$1,300 MXN</p>
+        </div>
+        
     </div>
 </main>
 
@@ -218,6 +265,7 @@
 </footer>
 
 <script>
+// --- Lógica del Modal ---
 function openModal(imgElement) {
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("imgFull");
@@ -232,11 +280,45 @@ function closeModal() {
     document.getElementById("imageModal").style.display = "none";
 }
 
-document.querySelectorAll('.product-card img').forEach(img => {
-    img.onclick = function() {
-        openModal(this);
-    }
+// Función para asignar el evento click a las imágenes (se usa al cargar y al reordenar)
+function bindImageClicks() {
+    document.querySelectorAll('.product-card img').forEach(img => {
+        img.onclick = function() {
+            openModal(this);
+        }
+    });
+}
+
+// --- Lógica de Ordenamiento ---
+const sortSelect = document.getElementById('sortPrice');
+const flowerGrid = document.getElementById('flowerGrid');
+
+sortSelect.addEventListener('change', function() {
+    const value = this.value;
+    if (value === 'default') return;
+
+    // Obtenemos todas las tarjetas actuales
+    const cards = Array.from(flowerGrid.querySelectorAll('.product-card'));
+
+    // Ordenamos el array de elementos según el atributo data-price
+    const sortedCards = cards.sort((a, b) => {
+        const priceA = parseFloat(a.getAttribute('data-price'));
+        const priceB = parseFloat(b.getAttribute('data-price'));
+
+        return value === 'low' ? priceA - priceB : priceB - priceA;
+    });
+
+    // Vaciamos el contenedor y añadimos los elementos ordenados
+    flowerGrid.innerHTML = '';
+    sortedCards.forEach(card => flowerGrid.appendChild(card));
+
+    // Volvemos a vincular los eventos del modal porque los elementos son "nuevos" en el DOM
+    bindImageClicks();
 });
+
+// Inicialización
+bindImageClicks();
+
 </script>
 
 </body>
